@@ -1,0 +1,509 @@
+// Register database SonicEdge build system
+{
+  "registers": [
+    {
+      "symbol"      : "audio_if.status",
+      "address"     : "0x00",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "1",
+      "description" : "Status from input audio interface [nc,PLL,SPDIF,I2S,RATE[3:0]]"
+    },
+    {
+      "symbol"      : "audio_if.input_sel",
+      "address"     : "0x01",
+      "pos"         : "0",
+      "size"        : "3",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "3:SIGGEN, 2:SPDIF, 1:I2S1(ADC), 0:I2S0"
+    },
+    {
+      "symbol"      : "audio_if.signalgenerator_enable",
+      "address"     : "0x01",
+      "pos"         : "3",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Enable signal generator"
+    },
+    {
+      "symbol"      : "audio_if.Version",
+      "address"     : "0x02",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "1234",
+      "readonly"    : "0",
+      "description" : "Indicates the HDL version flashed to FPGA"
+    },
+    {
+      "symbol"      : "audio_if.symbolShort",
+      "address"     : "0x05",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "1",
+      "description" : "clk pr symbol short"
+    },
+    {
+      "symbol"      : "audio_if.symbolMid",
+      "address"     : "0x06",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "1",
+      "description" : "clk pr symbol mid"
+    },
+    {
+      "symbol"      : "audio_if.symbolLong",
+      "address"     : "0x07",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "1",
+      "description" : "clk pr symbol long"
+    },
+    {
+      "symbol"      : "clk_sys.debug_mux",
+      "address"     : "0x0e",
+      "pos"         : "0",
+      "size"        : "4",
+      "reset"       : "2",
+      "readonly"    : "0",
+      "description" : "Select internal signal to debug bus"
+    },
+    {
+      "symbol"      : "clk_sys.debug_enable",
+      "address"     : "0x0e",
+      "pos"         : "4",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Disable debug bus output"
+    },
+    {
+      "symbol"      : "clk_sys.status",
+      "address"     : "0x08",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "1",
+      "description" : "Status from clock system"
+    },
+    {
+      "symbol"      : "modulator.cmut_enable",
+      "address"     : "0x10",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Enable CMUT driver"
+    },
+    {
+      "symbol"      : "modulator.cmut_reg_en",
+      "address"     : "0x10",
+      "pos"         : "1",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Drive from register"
+    },
+    {
+      "symbol"      : "modulator.cmut_mc",
+      "address"     : "0x10",
+      "pos"         : "2",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "CMUT MC high or low driver strength"
+    },
+    {
+      "symbol"      : "modulator.sr_locked_to_shut_cnt",
+      "address"     : "0x10",
+      "pos"         : "3",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Derive sr down factor form shut cnt"
+    },
+    {
+      "symbol"      : "modulator.cmut_reg",
+      "address"     : "0x11",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "CMUT overwrite register"
+    },
+    {
+      "symbol"      : "modulator.cmut_mask",
+      "address"     : "0x12",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "3",
+      "readonly"    : "0",
+      "description" : "cmut mask register"
+    },
+    {
+      "symbol"      : "modulator.mod_enable",
+      "address"     : "0x13",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "modulator enable used for fixed modulation"
+    },
+    {
+      "symbol"      : "modulator.div4_enable",
+      "address"     : "0x13",
+      "pos"         : "1",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Set 1:4 mode - Default 1:5"
+    },
+    {
+      "symbol"      : "modulator.mod_fixed_track",
+      "address"     : "0x13",
+      "pos"         : "2",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "track fixed modulation + 1"
+    },
+    {
+      "symbol"      : "modulator.sine_sdmod",
+      "address"     : "0x13",
+      "pos"         : "3",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Source modulator signal 0: counter ratio, 1: sigmadelta sine"
+    },
+    {
+      "symbol"      : "modulator.fixed_delta",
+      "address"     : "0x13",
+      "pos"         : "4",
+      "size"        : "4",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Fixed delta (Added to mod_cnt)"
+    },
+    {
+      "symbol"      : "modulator.mod_cnt",
+      "address"     : "0x14",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "221",
+      "readonly"    : "0",
+      "description" : "fixed carry counter"
+    },
+    {
+      "symbol"      : "modulator.shut_cnt",
+      "address"     : "0x15",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "109",
+      "readonly"    : "0",
+      "description" : "shutter counter"
+    },
+    {
+      "symbol"      : "modulator.mix_length",
+      "address"     : "0x16",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "29",
+      "readonly"    : "0",
+      "description" : "mixer sample length"
+    },
+    {
+      "symbol"      : "modulator.phase_delay",
+      "address"     : "0x17",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "12",
+      "readonly"    : "0",
+      "description" : "Phase delay modulator"
+    },
+    {
+      "symbol"      : "modulator.mixer_audio_const",
+      "address"     : "0x18",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Const input to mixer"
+    },
+    {
+      "symbol"      : "modulator.mixer_const_input_high",
+      "address"     : "0x19",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Mixer const input high"
+    },
+    {
+      "symbol"      : "modulator.mixer_const_input_low",
+      "address"     : "0x1a",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Mixer const input low"
+    },
+    {
+      "symbol"      : "modulator.phase_inc",
+      "address"     : "0x1b",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "15",
+      "readonly"    : "0",
+      "description" : "Modulator sine phase increment value, 256 added in block"
+    },
+    {
+      "symbol"      : "modulator.phase_inc_frac",
+      "address"     : "0x1c",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Modulator sine phase increment fraction "
+    },
+    {
+      "symbol"      : "modulator.bpsd_a",
+      "address"     : "0x1d",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "a coeffiecent bp centerfreq"
+    },
+    {
+      "symbol"      : "modulator.down_samp_factor",
+      "address"     : "0x1e",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "110",
+      "readonly"    : "0",
+      "description" : "Down sample rate for rate converter"
+    },
+    {
+      "symbol"      : "debug.dummy",
+      "address"     : "0x20",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "dummy signal"
+    },
+    {
+      "symbol"      : "amp_cfg.config_trig",
+      "address"     : "0x30",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Send config when high "
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem0",
+      "address"     : "0x38",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "64",
+      "readonly"    : "0",
+      "description" : "Bootmem0: Adr Master Volume"
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem1",
+      "address"     : "0x39",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "64",
+      "readonly"    : "0",
+      "description" : "Bootmem1: value"
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem2",
+      "address"     : "0x3a",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "53",
+      "readonly"    : "0",
+      "description" : "Bootmem2: Mode config"
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem3",
+      "address"     : "0x3b",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "8",
+      "readonly"    : "0",
+      "description" : "Bootmem3: DSP enable, I2S std format"
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem4",
+      "address"     : "0x3c",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "255",
+      "readonly"    : "0",
+      "description" : "Bootmem4: end of program"
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem5",
+      "address"     : "0x3d",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "255",
+      "readonly"    : "0",
+      "description" : "Bootmem5: end of program"
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem6",
+      "address"     : "0x3e",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "255",
+      "readonly"    : "0",
+      "description" : "Bootmem6: end of program"
+    },
+    {
+      "symbol"      : "amp_cfg.bootmem7",
+      "address"     : "0x3f",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "255",
+      "readonly"    : "0",
+      "description" : "Bootmem7: end of program"
+    },
+    {
+      "symbol"      : "sys_config.we",
+      "address"     : "0x28",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Sin table write "
+    },
+    {
+      "symbol"      : "sys_config.clk_xo_12mhz",
+      "address"     : "0x28",
+      "pos"         : "1",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "select external 12Mhz crystal for pll ref"
+    },
+    {
+      "symbol"      : "sys_config.mod_fixed",
+      "address"     : "0x28",
+      "pos"         : "2",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Force fixed delta modultaion"
+    },
+    {
+      "symbol"      : "sys_config.output_flip",
+      "address"     : "0x28",
+      "pos"         : "3",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "flip modulator / shutter driver"
+    },
+    {
+      "symbol"      : "sys_config.din",
+      "address"     : "0x29",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Write input value "
+    },
+    {
+      "symbol"      : "sys_config.db_sel0",
+      "address"     : "0x2a",
+      "pos"         : "0",
+      "size"        : "4",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Debug[0]"
+    },
+    {
+      "symbol"      : "sys_config.db_sel1",
+      "address"     : "0x2a",
+      "pos"         : "4",
+      "size"        : "4",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Debug[1]"
+    },
+    {
+      "symbol"      : "sys_config.db_sel2",
+      "address"     : "0x2b",
+      "pos"         : "0",
+      "size"        : "4",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Debug[2]"
+    },
+    {
+      "symbol"      : "sys_config.db_sel3",
+      "address"     : "0x2b",
+      "pos"         : "4",
+      "size"        : "4",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Debug[3]"
+    },
+    {
+      "symbol"      : "sys_config.db_sel4",
+      "address"     : "0x2c",
+      "pos"         : "0",
+      "size"        : "4",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Debug[4]"
+    },
+    {
+      "symbol"      : "sys_config.audio_generator",
+      "address"     : "0x2d",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Enable Audio Generator"
+    },
+    {
+      "symbol"      : "sys_config.audio_input_select",
+      "address"     : "0x2e",
+      "pos"         : "0",
+      "size"        : "2",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Audio input select (0:ADC,1:USB,2:SPDIF,3:ExtI2S)"
+    },
+    {
+      "symbol"      : "sys_config.audio_input_sel_mode",
+      "address"     : "0x2e",
+      "pos"         : "2",
+      "size"        : "2",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Audio input LED mode (0:off, 1: solid, 2: flash, 3: slow flash)"
+    },
+    {
+      "symbol"      : "sys_config.fifo_fill_level",
+      "address"     : "0x2f",
+      "pos"         : "0",
+      "size"        : "6",
+      "reset"       : "0",
+      "readonly"    : "1",
+      "description" : "Rate converter FIFO fill level"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+all: 
+	gobuildhdl_sym > rb_se_audio_system.sv 
